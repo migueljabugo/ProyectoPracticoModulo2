@@ -1,0 +1,19 @@
+﻿<h2>Ranking</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th style="width:200px;">Name</th>
+            <th style="width:200px;">Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (ProyectoPracticoModulo2.Models.Videogames game in Model)
+        {
+            <tr>
+                <td>@game.name</td>
+                <td>@game.score</td>
+            </tr>
+        }
+    </tbody>
+</table>

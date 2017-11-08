@@ -1,0 +1,27 @@
+﻿@model ProyectoPracticoModulo2.Models.Videogames
+@{
+    ViewBag.Title = "Search Game";
+}
+
+<div>
+    <h2>Search Game</h2>
+
+    @using (Html.BeginForm("SearchGame", "Home", FormMethod.Post, new { id = "frm-search-game" }))
+    {
+        <div class="panel panel-default">
+            <div class="panel-heading">Search Game</div>
+            <div class="panel-body">
+                <input type="text" name="search"/>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    }
+</div>
+<div>
+    @if (Model != null)
+    {
+        <a href="~/Home/Ver/@Model.id">@Model.name</a>
+    }
+</div>
+
+

@@ -1,0 +1,73 @@
+﻿@model ProyectoPracticoModulo2.Models.Videogames
+@{
+    ViewBag.Title = @Model.id != 0 ? "Edit Game" : "New Game";
+}
+
+<div>
+    <h2>@(Model.id!=0?"Edit Game":"New Game")</h2>
+
+    @using (Html.BeginForm("Guardar", "Home", FormMethod.Post, new { id = "frm-game" }))
+    {
+        @Html.HiddenFor(x => x.id)
+        <div class="panel panel-default">
+            <div class="panel-heading">Game Information</div>
+            <div class="panel-body">
+                <div class="form-group">
+                    @Html.LabelFor(x => x.name)
+                    @Html.TextBoxFor(x => x.name, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.publisher)
+                    @Html.TextBoxFor(x => x.publisher, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.year)
+                    @Html.TextBoxFor(x => x.year, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.genre)
+                    <select name="genre">
+                        <option value="0" @(Model.Genre() == ProyectoPracticoModulo2.Models.Genre.Unknow ? "selected" : "")>Unknow</option>
+                        <option value="1" @(Model.Genre() == ProyectoPracticoModulo2.Models.Genre.Action ? "selected" : "")>Action</option>
+                        <option value="2" @(Model.Genre() == ProyectoPracticoModulo2.Models.Genre.Adventure ? "selected" : "")>Adventure</option>
+                        <option value="3" @(Model.Genre() == ProyectoPracticoModulo2.Models.Genre.Strategy ? "selected" : "")>Strategy</option>
+                        <option value="4" @(Model.Genre() == ProyectoPracticoModulo2.Models.Genre.RPG ? "selected" : "")>RPG</option>
+                        <option value="5" @(Model.Genre() == ProyectoPracticoModulo2.Models.Genre.Sport ? "selected" : "")>Sport</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.platform)
+                    <select name="platform">
+                        <option value="0" @(Model.Platform() == ProyectoPracticoModulo2.Models.Platform.Unknow ? "selected" : "")>Unknow</option>
+                        <option value="1" @(Model.Platform() == ProyectoPracticoModulo2.Models.Platform.PC ? "selected" : "")>PC</option>
+                        <option value="2" @(Model.Platform() == ProyectoPracticoModulo2.Models.Platform.PS4 ? "selected" : "")>PS4</option>
+                        <option value="3" @(Model.Platform() == ProyectoPracticoModulo2.Models.Platform.XBOXONE ? "selected" : "")>XBOXONE</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.score)
+                    @Html.TextBoxFor(x=> x.score)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.online)
+                    @Html.CheckBoxFor(x => x.online)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.pegi)
+                    <select name="pegi">
+                        <option value="0" @(Model.Pegi() == ProyectoPracticoModulo2.Models.PEGI.Unknow ? "selected" : "")>Unknow</option>
+                        <option value="1" @(Model.Pegi() == ProyectoPracticoModulo2.Models.PEGI.PEGI_3 ? "selected" : "")>PEGI +3</option>
+                        <option value="2" @(Model.Pegi() == ProyectoPracticoModulo2.Models.PEGI.PEGI_6 ? "selected" : "")>PEGI +6</option>
+                        <option value="3" @(Model.Pegi() == ProyectoPracticoModulo2.Models.PEGI.PEGI_12 ? "selected" : "")>PEGI +12</option>
+                        <option value="4" @(Model.Pegi() == ProyectoPracticoModulo2.Models.PEGI.PEGI_18 ? "selected" : "")>PEGI +18</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+
+
+    }
+</div>
+
